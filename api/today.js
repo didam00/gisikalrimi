@@ -46,7 +46,9 @@ export default async function handler(req, res) {
 
   day = date.getDay() === 0 ? 6 : date.getDay() - 1;
 
-  console.log(date.getFullYear(), date.getMonth() + 1, date.getDate(), time, day);
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let yil = date.getDate();
 
   try {
     const { data } = await axios.get(targetURL);
@@ -61,8 +63,19 @@ export default async function handler(req, res) {
       dietData.push(row);
     });
 
+    let responseText = `다음은 ${year}년 ${month}월 ${yil}일의 ${["아침", "점심", "저녁"][time]} 식단입니다! \n\n` + dietData[time][day].map(item => `· ${item}`).join('\n') + "\n\n맛있는 식사되십시오! 🫡";
+
     const resBody = {
-      data: dietData[time][day],
+      version: "2.0",
+      template: {
+        outputs: [
+          {
+            simpleText: {
+              text: responseText
+            }
+          }
+        ]
+      }
     };
 
     res.status(200).json(resBody);
