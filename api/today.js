@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     if (day === 5 || day === 6) {
       if (date.getHours() < 13) {
         time = LUNCH;
-      } else if (date.getHours() <= 18 && date.getMinutes() < 40) {
+      } else if (date.getHours() <= 18 || (date.getHours() == 18 && date.getMinutes() < 40)) {
         time = DINNER;
       } else {
         time = BREAKFAST;
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     } else {
       if (date.getHours() < 9) {
         time = BREAKFAST;
-      } else if (date.getHours() <= 13 && date.getMinutes() < 30) {
+      } else if (date.getHours() <= 13 || (date.getHours() == 13 && date.getMinutes() < 30)) {
         time = LUNCH;
       } else if (date.getHours() < 19) {
         time = DINNER;
@@ -67,7 +67,6 @@ export default async function handler(req, res) {
 
     const resBody = {
       version: "2.0",
-      time: new Date().toISOString(),
       template: {
         outputs: [
           {
