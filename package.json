@@ -1,0 +1,19 @@
+{
+  "name": "gisikalrimi",
+  "version": "1.0.0",
+  "description": "crawling KSNU domitori site's its diet table api endpoint",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "goo.oosy",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
