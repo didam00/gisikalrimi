@@ -1,6 +1,7 @@
 {
   "name": "gisikalrimi",
   "version": "1.0.0",
+  "type": "module",
   "description": "crawling KSNU domitori site's its diet table api endpoint",
   "scripts": {
     "start": "echo 'hello world'"

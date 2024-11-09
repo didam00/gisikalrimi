@@ -1,5 +1,5 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+import axios from 'axios';
+import cheerio from 'cheerio';
 
 const [BREAKFAST, LUNCH, DINNER] = [0, 1, 2];
 const DAY_TIMES = 24 * 60 * 60 * 1000;
