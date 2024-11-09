@@ -2,9 +2,8 @@
   "name": "gisikalrimi",
   "version": "1.0.0",
   "description": "crawling KSNU domitori site's its diet table api endpoint",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "echo 'hello world'"
   },
   "author": "goo.oosy",
   "license": "ISC",
