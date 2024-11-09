@@ -4,7 +4,7 @@
   "description": "crawling KSNU domitori site's its diet table api endpoint",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "goo.oosy",
   "license": "ISC",
