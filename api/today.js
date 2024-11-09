@@ -6,7 +6,7 @@ const DAY_TIMES = 24 * 60 * 60 * 1000;
 
 export default async function handler(req, res) {
   let targetURL;
-  let date = new Date();
+  let date = new Date(new Date().getTime() + (9 * 60 * 60 * 1000)); // KST
   let time = LUNCH;
   let day = date.getDay();
 
