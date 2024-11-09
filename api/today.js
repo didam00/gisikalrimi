@@ -67,6 +67,7 @@ export default async function handler(req, res) {
 
     const resBody = {
       version: "2.0",
+      time: new Date().toISOString(),
       template: {
         outputs: [
           {
