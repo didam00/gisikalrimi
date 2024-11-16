@@ -59,7 +59,7 @@ export default async function handler(req, res) {
     }
   }
 
-  day = date.getDay() === 0 ? 6 : date.getDay() - 1;
+  day = date.getDay() === 0 ? 7 : date.getDay() - 1;
 
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
