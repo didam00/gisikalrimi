@@ -21,24 +21,39 @@ export default async function handler(req, res) {
   } else {
     targetURL = 'https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000';
 
-    if (day === 5 || day === 6) {
+    let pass = false;
+
+    // 토요일 - 일요일
+    if (day === 0 || day === 6) {
+      // 00:00 - 12:59
+      if (date.getHours() < 9) pass = true;
+
       if (date.getHours() < 13) {
         time = LUNCH;
+      // 13:00 - 18:39
       } else if (date.getHours() <= 18 || (date.getHours() == 18 && date.getMinutes() < 40)) {
         time = DINNER;
+      // 18:40 - 23:59
       } else {
-        time = BREAKFAST;
+        if (day === 6) pass = true;
+        time = day === 6 ? LUNCH : BREAKFAST; // 토요일일 경우 다음날 점심
         date.setDate(date.getDate() + 1);
       }
+    // 월요일 - 목요일
     } else {
+      // 00:00 - 08:59
       if (date.getHours() < 9) {
         time = BREAKFAST;
+      // 09:00 - 13:29
       } else if (date.getHours() <= 13 || (date.getHours() == 13 && date.getMinutes() < 30)) {
         time = LUNCH;
+      // 13:30 - 18:59
       } else if (date.getHours() < 19) {
         time = DINNER;
+      // 19:00 - 23:59
       } else {
-        time = BREAKFAST;
+        if (day === 5) pass = true;
+        time = day === 5 ? LUNCH : BREAKFAST; // 금요일일 경우 다음날 점심
         date.setDate(date.getDate() + 1);
       }
     }
@@ -63,7 +78,12 @@ export default async function handler(req, res) {
       dietData.push(row);
     });
 
-    let responseText = `다음은 ${year}년 ${month}월 ${yil}일의 ${["아침", "점심", "저녁"][time]} 식단입니다! \n\n` + dietData[time][day].map(item => `· ${item}`).join('\n') + "\n\n맛있는 식사되십시오! 🫡";
+    let responseText = 
+      `다음은 ${year}년 ${month}월 ${yil}일의 ${["아침", "점심", "저녁"][time]} 식단입니다!`
+      + (pass ? "\n다음 아침 식사는 미제공하므로 점심을 알려드리겠습니다!" : "")
+      + "\n\n"
+      + dietData[time][day].map(item => `· ${item}`).join('\n')
+      + "\n\n맛있는 식사되십시오! 🫡";
 
     const resBody = {
       version: "2.0",
