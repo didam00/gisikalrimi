@@ -21,7 +21,8 @@ export default async function handler(req, res) {
     let targetURLParamsDate = toDate8(new Date(date - date.getDay() * DAY_TIMES));
     targetURL = `https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000&cpath=%2Fdormi&sdate=${targetURLParamsDate}`;
   } else {
-    targetURL = 'https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000';
+    let targetURLParamsDate = toDate8(new Date(date - date.getDay() * DAY_TIMES));
+    targetURL = `https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000&cpath=%2Fdormi&sdate=${targetURLParamsDate}`;
 
     // 토요일 - 일요일
     if (day === 0 || day === 6) {
