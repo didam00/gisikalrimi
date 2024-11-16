@@ -10,6 +10,8 @@ export default async function handler(req, res) {
   let time = LUNCH;
   let day = date.getDay();
 
+  let pass = false;
+
   if (Object.keys(req.query).length !== 0) {
     date.setFullYear(req.query.year);
     date.setMonth(req.query.month - 1);
@@ -20,8 +22,6 @@ export default async function handler(req, res) {
     targetURL = `https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000&cpath=%2Fdormi&sdate=${targetURLParamsDate}`;
   } else {
     targetURL = 'https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000';
-
-    let pass = false;
 
     // 토요일 - 일요일
     if (day === 0 || day === 6) {
