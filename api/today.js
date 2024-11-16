@@ -100,9 +100,9 @@ export default async function handler(req, res) {
 
     res.status(200).json(resBody);
   } catch (error) {
-    console.error(error);
     res.status(500).json({
       message: 'Error scraping data',
+      body: error,
       date: date,
       time: time,
       day: day,
