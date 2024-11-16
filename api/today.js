@@ -107,7 +107,6 @@ export default async function handler(req, res) {
       time: time,
       day: day,
       pass: pass,
-      dietData: dietData
     });
   }
 }
