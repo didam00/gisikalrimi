@@ -18,10 +18,10 @@ export default async function handler(req, res) {
     date.setDate(req.query.date);
     time = req.query.time;
 
-    let targetURLParamsDate = toDate8(new Date(date - date.getDay() * DAY_TIMES));
+    let targetURLParamsDate = toDate8(new Date(date - (date.getDay() || 7) * DAY_TIMES));
     targetURL = `https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000&cpath=%2Fdormi&sdate=${targetURLParamsDate}`;
   } else {
-    let targetURLParamsDate = toDate8(new Date(date - date.getDay() * DAY_TIMES));
+    let targetURLParamsDate = toDate8(new Date(date - (date.getDay() || 7) * DAY_TIMES));
     targetURL = `https://www.kunsan.ac.kr/dormi/index.kunsan?menuCd=DOM_000000704006003000&cpath=%2Fdormi&sdate=${targetURLParamsDate}`;
 
     // 토요일 - 일요일
